@@ -14,7 +14,7 @@ endif
 " Plugins list
 "-------------------------------------------------------------------------------
 "репозитории на github
-"Bundle 'tpope/vim-fugitive'
+Bundle	'gmarik/vundle'
 Bundle  'scrooloose/nerdtree'
 Bundle	'mattn/emmet-vim'
 Bundle	'tpope/vim-surround'
