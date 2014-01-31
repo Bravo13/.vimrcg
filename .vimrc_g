@@ -1,0 +1,108 @@
+filetype off 
+if has('win32') || has('win64')
+    set rtp+=$VIM/bundle/vundle/ 
+    call vundle#rc('$VIM/bundle/')
+else
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+endif
+filetype plugin indent on
+
+if exists(':BundleInstall')
+"-------------------------------------------------------------------------------
+" Plugins list
+"-------------------------------------------------------------------------------
+"репозитории на github
+"Bundle 'tpope/vim-fugitive'
+Bundle  'scrooloose/nerdtree'
+Bundle	'mattn/emmet-vim'
+Bundle	'tpope/vim-surround'
+
+"репозитории vim/scripts
+"Bundle 'L9'
+Bundle	'perl-support.vim'
+
+"git репозитории (не на github)
+"Bundle 'git://git.wincent.com/command-t.git'
+
+"локальные git репозитории(если работаете над собственным плагином)
+"Bundle 'file:///Users/gmarik/path/to/plugin'
+endif
+
+"-------------------------------------------------------------------------------
+" Use Vim settings, rather then Vi settings.
+" This must be first, because it changes other options as a side effect.
+"-------------------------------------------------------------------------------
+set nocompatible
+
+"-------------------------------------------------------------------------------
+" Enable file type detection. Use the default filetype settings.
+" Also load indent files, to automatically do language-dependent indenting.
+"-------------------------------------------------------------------------------
+filetype  plugin on
+filetype  indent on
+
+syntax on
+
+set number
+set t_Co=256
+colorscheme uperl
+
+if exists(':NERDTreeToggle')
+	"au VimEnter * NERDTreeToggle D:/web/sites
+	" hit <F3> to toggle NERDTree
+	nmap <F3> :NERDTreeToggle<CR>
+	let g:nerdtree_tabs_open_on_gui_startup=1
+endif
+
+if exists(':TlistToggle')
+	" hit <F8> to show/hide taglist
+	nnoremap <silent> <F8> :TlistToggle<CR>
+endif
+
+"remove toolbar
+set guioptions-=T
+
+set guifont=Courier_New:h12
+
+" Maximize window
+" call libcallnr('maximize', 'Maximize', 1) 
+
+" switch higlight no matter the previous state
+nmap <F4> :set hls! <cr>
+" hit '/' highlights then enter search mode
+nnoremap / :set hlsearch<cr>/
+
+autocmd FileType perl colorscheme uperl
+autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
+
+"-------------------------------------------------------------------------------
+" Various settings
+"-------------------------------------------------------------------------------
+set autoindent                  " copy indent from current line
+set autoread                    " read open files again when changed outside Vim
+set autowrite                   " write a modified buffer on each :next , ...
+set backspace=indent,eol,start  " backspacing over everything in insert mode
+set backup                      " keep a backup file
+set browsedir=current           " which directory to use for the file browser
+set complete+=k                 " scan the files given with the 'dictionary' option
+set history=50                  " keep 50 lines of command line history
+set hlsearch                    " highlightthe last used search pattern
+set incsearch                   " do incremental searching
+set listchars=tab:>.,eol:\$     " strings to use in 'list' mode
+set mouse=a                     " enable the use of the mouse
+set nowrap                      " do not wrap lines
+set popt=left:8pc,right:3pc     " print options
+set ruler                       " show the cursor position all the time
+set shiftwidth=2                " number of spaces to use for each step of indent
+set showcmd                     " display incomplete commands
+set smartindent                 " smart autoindenting when starting a new line
+set tabstop=2                   " number of spaces that a <Tab> counts for
+set visualbell                  " visual bell instead of beeping
+set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
+set wildmenu                    " command-line completion in an enhanced mode
+
+"-------------------------------------------------------------------------------
+"  highlight paired brackets
+"-------------------------------------------------------------------------------
+highlight MatchParen ctermbg=blue guibg=lightyellow
