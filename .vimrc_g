@@ -1,3 +1,5 @@
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8
 filetype off 
 let $VIMHOME=expand('<sfile>:p:h:h')
 if has('win32') || has('win64')
@@ -21,6 +23,7 @@ Bundle	'tpope/vim-surround'
 Bundle	'Bravo13/vim-perl-colorscheme'
 Bundle	'Bravo13/vim-plugins'
 Bundle	'altercation/vim-colors-solarized'
+Bundle	'jiangmiao/auto-pairs'
 
 "репозитории vim/scripts
 "Bundle 'L9'
@@ -124,3 +127,41 @@ set wildmenu                    " command-line completion in an enhanced mode
 highlight MatchParen ctermbg=blue guibg=lightyellow
 
 autocmd VimEnter * :call Plugins()
+
+" Shortcuts
+let mapleader = ","
+" Disable <Arrow keys>
+" Warning: nightmare mode!
+inoremap <Up> <NOP>
+inoremap <Down> <NOP>
+inoremap <Left> <NOP>
+inoremap <Right> <NOP>
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" Navigate with <Ctrl>-hjkl in Insert mode
+imap <C-h> <C-o>h
+imap <C-j> <C-o>j
+imap <C-k> <C-o>k
+imap <C-l> <C-o>l
+
+" Switch splits
+nmap <C-h> <C-W>h
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l
+
+" n and N
+" Search matches are always in center
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
+
+" Navigate through wrapped lines
+noremap j gj
+noremap k gk
