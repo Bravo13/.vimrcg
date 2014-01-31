@@ -68,6 +68,8 @@ syntax on
 set number
 set t_Co=256
 try 
+	let g:solarized_termcolors=256
+	set background=dark
 	colorscheme solarized
 catch
 	colorscheme blue
