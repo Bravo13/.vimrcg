@@ -25,6 +25,7 @@ Bundle	'altercation/vim-colors-solarized'
 "репозитории vim/scripts
 "Bundle 'L9'
 "Bundle	'perl-support.vim'
+Bundle	'taglist.vim'
 
 "git репозитории (не на github)
 "Bundle 'git://git.wincent.com/command-t.git'
