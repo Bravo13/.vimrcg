@@ -1,14 +1,15 @@
 filetype off 
+let $VIMHOME=expand('<sfile>:p:h:h')
 if has('win32') || has('win64')
     set rtp+=$VIM/bundle/vundle/ 
     call vundle#rc('$VIM/bundle/')
+	let $VIMHOME = $VIM."/vimfiles"
 else
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
+	let $VIMHOME = $HOME."/.vim"
 endif
-filetype plugin indent on
 
-if exists(':BundleInstall')
 "-------------------------------------------------------------------------------
 " Plugins list
 "-------------------------------------------------------------------------------
@@ -17,17 +18,37 @@ if exists(':BundleInstall')
 Bundle  'scrooloose/nerdtree'
 Bundle	'mattn/emmet-vim'
 Bundle	'tpope/vim-surround'
+Bundle	'Bravo13/vim-perl-colorscheme'
+Bundle	'Bravo13/vim-plugins'
+Bundle	'altercation/vim-colors-solarized'
 
 "репозитории vim/scripts
 "Bundle 'L9'
-Bundle	'perl-support.vim'
+"Bundle	'perl-support.vim'
 
 "git репозитории (не на github)
 "Bundle 'git://git.wincent.com/command-t.git'
 
 "локальные git репозитории(если работаете над собственным плагином)
 "Bundle 'file:///Users/gmarik/path/to/plugin'
-endif
+
+filetype plugin indent on
+
+function! Plugins()
+	let g:myvar=exists(':NERDTree')
+	if exists(':NERDTree')
+		"au VimEnter * NERDTreeToggle D:/web/sites
+		" hit <F3> to toggle NERDTree
+		exe "nmap <F3> :NERDTreeToggle<CR>"
+		
+		let g:nerdtree_tabs_open_on_gui_startup=1
+	endif
+
+	if exists(':TlistToggle')
+		" hit <F8> to show/hide taglist
+		nnoremap <silent> <F8> :TlistToggle<CR>
+	endif
+endfunction
 
 "-------------------------------------------------------------------------------
 " Use Vim settings, rather then Vi settings.
@@ -46,19 +67,11 @@ syntax on
 
 set number
 set t_Co=256
-colorscheme uperl
-
-if exists(':NERDTreeToggle')
-	"au VimEnter * NERDTreeToggle D:/web/sites
-	" hit <F3> to toggle NERDTree
-	nmap <F3> :NERDTreeToggle<CR>
-	let g:nerdtree_tabs_open_on_gui_startup=1
-endif
-
-if exists(':TlistToggle')
-	" hit <F8> to show/hide taglist
-	nnoremap <silent> <F8> :TlistToggle<CR>
-endif
+try 
+	colorscheme solarized
+catch
+	colorscheme blue
+endtry
 
 "remove toolbar
 set guioptions-=T
@@ -106,3 +119,5 @@ set wildmenu                    " command-line completion in an enhanced mode
 "  highlight paired brackets
 "-------------------------------------------------------------------------------
 highlight MatchParen ctermbg=blue guibg=lightyellow
+
+autocmd VimEnter * :call Plugins()
