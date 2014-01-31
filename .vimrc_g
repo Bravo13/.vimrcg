@@ -21,13 +21,13 @@ Bundle  'scrooloose/nerdtree'
 Bundle	'mattn/emmet-vim'
 Bundle	'tpope/vim-surround'
 Bundle	'Bravo13/vim-perl-colorscheme'
-Bundle	'Bravo13/vim-plugins'
+"Bundle	'Bravo13/vim-plugins'
 Bundle	'altercation/vim-colors-solarized'
 Bundle	'jiangmiao/auto-pairs'
 
 "репозитории vim/scripts
 "Bundle 'L9'
-"Bundle	'perl-support.vim'
+Bundle	'perl-support.vim'
 Bundle	'taglist.vim'
 
 "git репозитории (не на github)
@@ -39,7 +39,6 @@ Bundle	'taglist.vim'
 filetype plugin indent on
 
 function! Plugins()
-	let g:myvar=exists(':NERDTree')
 	if exists(':NERDTree')
 		"au VimEnter * NERDTreeToggle D:/web/sites
 		" hit <F3> to toggle NERDTree
