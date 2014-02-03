@@ -1,0 +1,6 @@
+== Statements.if-else == map:sie, sc:i ==
+if ( <CURSOR> ) {
+	<-IF_PART->
+} else {
+	<-ELSE_PART->
+}

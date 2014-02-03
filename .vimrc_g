@@ -2,6 +2,7 @@ set encoding=utf-8
 set fileencodings=ucs-bom,utf-8
 filetype off 
 let $VIMHOME=expand('<sfile>:p:h:h')
+let g:Perl_LocalTemplateFile = $HOME.'\.vimrcg\perl-templates\Templates'
 if has('win32') || has('win64')
     set rtp+=$VIM/bundle/vundle/ 
     call vundle#rc('$VIM/bundle/')
