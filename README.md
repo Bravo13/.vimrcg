@@ -10,4 +10,8 @@ Before using this .vimrcg follow next simple steps
   
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle 
 
+  3. install ctags 
+  
+    http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
+
 Now you can run vim and start BundleInstall to get cool themes and plugins :)
