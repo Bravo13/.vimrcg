@@ -26,6 +26,8 @@ Bundle	'Bravo13/vim-perl-colorscheme'
 "Bundle	'Bravo13/vim-plugins'
 Bundle	'altercation/vim-colors-solarized'
 Bundle	'jiangmiao/auto-pairs'
+"Bundle	'airblade/vim-gitgutter'
+Bundle	'tpope/vim-fugitive'
 
 "репозитории vim/scripts
 "Bundle 'L9'
