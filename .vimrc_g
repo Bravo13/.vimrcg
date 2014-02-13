@@ -7,6 +7,7 @@ if has('win32') || has('win64')
     call vundle#rc('$VIM/bundle/')
 	let $VIMHOME = $VIM."/vimfiles"
 	let g:Perl_LocalTemplateFile = $HOME.'\.vimrcg\perl-templates\Templates'
+	let g:Perl_GlobalTemplateFile = $VIM.'\bundle\perl-support.vim\perl-support\templates\Templates'
 else
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
