@@ -27,7 +27,7 @@ Bundle	'Bravo13/vim-perl-colorscheme'
 "Bundle	'Bravo13/vim-plugins'
 Bundle	'altercation/vim-colors-solarized'
 Bundle	'jiangmiao/auto-pairs'
-"Bundle	'airblade/vim-gitgutter'
+Bundle	'airblade/vim-gitgutter'
 Bundle	'tpope/vim-fugitive'
 
 "репозитории vim/scripts
@@ -44,6 +44,10 @@ Bundle	'taglist.vim'
 filetype plugin indent on
 
 function! Plugins()
+	if exists(':GitGutterEnable')
+		nmap <F2> :GitGutterToggle<CR>
+		GitGutterLineHighlightsEnable
+	endif
 	if exists(':NERDTree')
 		"au VimEnter * NERDTreeToggle D:/web/sites
 		" hit <F3> to toggle NERDTree
@@ -97,7 +101,7 @@ nmap <F4> :set hls! <cr>
 nnoremap / :set hlsearch<cr>/
 
 autocmd FileType perl colorscheme uperl
-autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
+"autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
 
 "-------------------------------------------------------------------------------
 " Various settings
