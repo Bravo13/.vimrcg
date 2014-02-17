@@ -8,6 +8,7 @@ if has('win32') || has('win64')
 	let $VIMHOME = $VIM."/vimfiles"
 	let g:Perl_LocalTemplateFile = $HOME.'\.vimrcg\perl-templates\Templates'
 	let g:Perl_GlobalTemplateFile = $VIM.'\bundle\perl-support.vim\perl-support\templates\Templates'
+	"autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
 else
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
@@ -101,7 +102,9 @@ nmap <F4> :set hls! <cr>
 nnoremap / :set hlsearch<cr>/
 
 autocmd FileType perl colorscheme uperl
-"autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
+
+set laststatus=2
+set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ ff:%{&ff}\ fenc:%{&fenc}%=(ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ [%2p%%]%{fugitive#statusline()}
 
 "-------------------------------------------------------------------------------
 " Various settings
