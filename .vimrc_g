@@ -30,6 +30,8 @@ Bundle	'altercation/vim-colors-solarized'
 Bundle	'jiangmiao/auto-pairs'
 Bundle	'airblade/vim-gitgutter'
 Bundle	'tpope/vim-fugitive'
+Bundle	'xolox/vim-session'
+Bundle	'xolox/vim-misc'
 
 "репозитории vim/scripts
 "Bundle 'L9'
