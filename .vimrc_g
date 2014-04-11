@@ -146,12 +146,16 @@ nnoremap / :set hlsearch<cr>/
 
 autocmd FileType perl colorscheme uperl
 
-set laststatus=2
-setlocal statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ ff:%{&ff}\ fenc:%{&fenc}%=(ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ 
-if has('perl')
-	setlocal statusline+=%(\%{StatusLineIndexLine()}%)
-endif
-setlocal statusline+=[%2p%%]%{fugitive#statusline()}
+function! SetStatusline()
+	set laststatus=2
+	set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ ff:%{&ff}\ fenc:%{&fenc}%=(ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ 
+	if has('perl')
+		set statusline+=%(\%{StatusLineIndexLine()}%)
+	endif
+	set statusline+=[%2p%%]%{fugitive#statusline()}
+endfunction
+
+call SetStatusline()
 
 
 "-------------------------------------------------------------------------------
