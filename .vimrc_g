@@ -1,5 +1,6 @@
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8
+source $HOME/.vimrcg/vim_use_utf8_symbols
 filetype off 
 let $VIMHOME=expand('<sfile>:p:h:h')
 if has('win32') || has('win64')
@@ -44,6 +45,70 @@ Bundle	'taglist.vim'
 
 filetype plugin indent on
 
+function MyTabLine()
+	let tabline = ''
+
+	" Формируем tabline для каждой вкладки -->
+	for i in range(tabpagenr('$'))
+		" Подсвечиваем заголовок выбранной в данный момент вкладки.
+		if i + 1 == tabpagenr()
+			let tabline .= '%#TabLineSel#'
+		else
+			let tabline .= '%#TabLine#'
+		endif
+
+		" Устанавливаем номер вкладки
+		let tabline .= '%' . (i + 1) . 'T'
+
+		" Получаем имя вкладки
+		let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} |'
+	endfor
+	" Формируем tabline для каждой вкладки <--
+
+	" Заполняем лишнее пространство
+	let tabline .= '%#TabLineFill#%T'
+
+	" Выровненная по правому краю кнопка закрытия вкладки
+	if tabpagenr('$') > 1
+		let tabline .= '%=%#TabLine#%999XX'
+	endif
+
+	return tabline
+endfunction
+
+function MyTabLabel(n)
+	let label = ''
+	let buflist = tabpagebuflist(a:n)
+
+	" Имя файла и номер вкладки -->
+	"let label = substitute(bufname(buflist[tabpagewinnr(a:n) - 1]), '.*/', '', '')
+	let label =  pathshorten(bufname(buflist[tabpagewinnr(a:n) - 1]))
+
+	if label == ''
+		let label = '[No Name]'
+	endif
+
+	let label .= ' (' . a:n . ')'
+	" Имя файла и номер вкладки <--
+
+	" Определяем, есть ли во вкладке хотя бы один
+	" модифицированный буфер.
+	" -->
+	for i in range(len(buflist))
+		if getbufvar(buflist[i], "&modified")
+			let label = '[+] ' . label
+			break
+		endif
+	endfor
+	" <--
+
+	return label
+endfunction
+
+function MyGuiTabLabel()
+	return '%{MyTabLabel(' . tabpagenr() . ')}'
+endfunction
+
 function! Plugins()
 	if exists(':GitGutterEnable')
 		nmap <F2> :GitGutterToggle<CR>
@@ -58,6 +123,7 @@ function! Plugins()
 	endif
 
 	if exists(':TlistToggle')
+		" hit <F8> to show/hide taglist
 		" hit <F8> to show/hide taglist
 		nnoremap <silent> <F8> :TlistToggle<CR>
 	endif
@@ -174,7 +240,6 @@ set incsearch                   " do incremental searching
 set listchars=tab:>.,eol:\$     " strings to use in 'list' mode
 set mouse=a                     " enable the use of the mouse
 set nowrap                      " do not wrap lines
-set popt=left:8pc,right:3pc     " print options
 set ruler                       " show the cursor position all the time
 set shiftwidth=2                " number of spaces to use for each step of indent
 set showcmd                     " display incomplete commands
@@ -188,7 +253,8 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/* 
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set writebackup
-
+set tabline=%!MyTabLine()
+set guitablabel=%!MyGuiTabLabel()
 "-------------------------------------------------------------------------------
 "  highlight paired brackets
 "-------------------------------------------------------------------------------
