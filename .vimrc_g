@@ -8,11 +8,14 @@ if has('win32') || has('win64')
     call vundle#rc('$VIM/bundle/')
 	let $VIMHOME = $VIM."/vimfiles"
 	let g:Perl_GlobalTemplateFile = $VIM.'\bundle\perl-support.vim\perl-support\templates\Templates'
+	let g:Perl_LocalTemplateFile = $HOME.'\.vimrcg\perl-templates\Templates'
 	"autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
 else
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
+	set rtp+=~/.vim/bundle/vundle/
+	call vundle#rc()
 	let $VIMHOME = $HOME."/.vim"
+	let g:Perl_GlobalTemplateFile = $HOME.'/.vim/bundle/vim-plugins/perl-support/templates/Templates'
+	let g:Perl_LocalTemplateFile = $HOME.'/.vimrcg/perl-templates/Templates'
 endif
 
 "-------------------------------------------------------------------------------
@@ -24,7 +27,7 @@ Bundle  'scrooloose/nerdtree'
 Bundle	'mattn/emmet-vim'
 Bundle	'tpope/vim-surround'
 Bundle	'Bravo13/vim-perl-colorscheme'
-"Bundle	'Bravo13/vim-plugins'
+Bundle	'Bravo13/vim-plugins'
 Bundle	'altercation/vim-colors-solarized'
 Bundle	'jiangmiao/auto-pairs'
 Bundle	'airblade/vim-gitgutter'
@@ -34,7 +37,7 @@ Bundle	'xolox/vim-misc'
 
 "репозитории vim/scripts
 "Bundle 'L9'
-Bundle	'perl-support.vim'
+"Bundle	'perl-support.vim'
 Bundle	'taglist.vim'
 
 "git репозитории (не на github)
@@ -299,13 +302,3 @@ nmap g# g#zz
 " Navigate through wrapped lines
 noremap j gj
 noremap k gk
-
-"-------------------------------------------------------------------------------
-" Perl-Support
-"-------------------------------------------------------------------------------
-if has('win32') || has('win64')
-	let g:Perl_LocalTemplateFile = $HOME.'\.vimrcg\perl-templates\Templates'
-else
-	let g:Perl_GlobalTemplateFile = $HOME.'/.vim/bundle/perl-support.vim/templates/Templates'
-	let g:Perl_LocalTemplateFile = $HOME.'/.vimrcg/perl-templates/Templates'
-endif"
