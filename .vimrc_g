@@ -299,6 +299,9 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+"Make foldings
+nmap zC v%zf
+
 " Navigate through wrapped lines
 noremap j gj
 noremap k gk
