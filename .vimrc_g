@@ -4,13 +4,21 @@ source $HOME/.vimrcg/vim_use_utf8_symbols
 filetype off 
 let $VIMHOME=expand('<sfile>:p:h:h')
 if has('win32') || has('win64')
-    set rtp+=$VIM/bundle/vundle/ 
-    call vundle#rc('$VIM/bundle/')
 	let $VIMHOME = $VIM."/vimfiles"
-	let g:Perl_GlobalTemplateFile = $VIM.'\bundle\perl-support.vim\perl-support\templates\Templates'
+	set directory=$VIM."\temp"
+	set backupdir=$VIM."\temp"
+	set backupskip=/tmp/*,/private/tmp/* 
+	let $TEMP = $VIM."\temp"
+	let $TMPDIR = $VIM."\temp" 
+    set rtp+=$VIMHOME/bundle/vundle/ 
+    call vundle#rc('$VIMHOME/bundle/')
+	let g:Perl_GlobalTemplateFile = $VIMHOME.'\bundle\vim-plugins\perl-support\templates\Templates'
 	let g:Perl_LocalTemplateFile = $HOME.'\.vimrcg\perl-templates\Templates'
 	"autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
 else
+	set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+	set backupskip=/tmp/*,/private/tmp/* 
+	set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 	set rtp+=~/.vim/bundle/vundle/
 	call vundle#rc()
 	let $VIMHOME = $HOME."/.vim"
@@ -252,9 +260,6 @@ set visualbell                  " visual bell instead of beeping
 set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
 set backup 											" setup for backup swap files location
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
-set backupskip=/tmp/*,/private/tmp/* 
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set writebackup
 set tabline=%!MyTabLine()
 set guitablabel=%!MyGuiTabLabel()
