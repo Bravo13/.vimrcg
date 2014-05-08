@@ -42,6 +42,7 @@ Bundle	'airblade/vim-gitgutter'
 Bundle	'tpope/vim-fugitive'
 Bundle	'xolox/vim-session'
 Bundle	'xolox/vim-misc'
+"Bundle	'fholgado/minibufexpl.vim'
 
 "репозитории vim/scripts
 "Bundle 'L9'
@@ -261,12 +262,18 @@ set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
 set backup 											" setup for backup swap files location
 set writebackup
+"set showtabline=0
 set tabline=%!MyTabLine()
 set guitablabel=%!MyGuiTabLabel()
 "-------------------------------------------------------------------------------
 "  highlight paired brackets
 "-------------------------------------------------------------------------------
 highlight MatchParen ctermbg=blue guibg=lightyellow
+
+"-------------------------------------------------------------------------------
+"  MiniBufExpl
+"-------------------------------------------------------------------------------
+let g:miniBufExplUseSingleClick = 1
 
 autocmd VimEnter * :call Plugins()
 
