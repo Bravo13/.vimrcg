@@ -42,9 +42,10 @@ Bundle	'airblade/vim-gitgutter'
 Bundle	'tpope/vim-fugitive'
 Bundle	'xolox/vim-session'
 Bundle	'xolox/vim-misc'
-"Bundle	'fholgado/minibufexpl.vim'
 Bundle	'shinokada/SWTC.vim'
 Bundle	'kien/ctrlp.vim'
+"Bundle	'bling/vim-airline'
+"Bundle	'fholgado/minibufexpl.vim'
 
 "репозитории vim/scripts
 "Bundle 'L9'
@@ -127,6 +128,12 @@ function! Plugins()
 	if exists(':GitGutterEnable')
 		nmap <F2> :GitGutterToggle<CR>
 		GitGutterLineHighlightsEnable
+	endif
+	if exists(':AirlineToggle')
+		let g:airline_powerline_fonts = 1	
+		let g:airline_left_sep=''
+		let g:airline_right_sep=''
+		let g:airline_theme='bubblegum'
 	endif
 	if exists(':CtrlP')
 		nmap <F6> :CtrlP<CR>
