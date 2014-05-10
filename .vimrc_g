@@ -43,6 +43,8 @@ Bundle	'tpope/vim-fugitive'
 Bundle	'xolox/vim-session'
 Bundle	'xolox/vim-misc'
 "Bundle	'fholgado/minibufexpl.vim'
+Bundle	'shinokada/SWTC.vim'
+Bundle	'kien/ctrlp.vim'
 
 "репозитории vim/scripts
 "Bundle 'L9'
@@ -125,6 +127,9 @@ function! Plugins()
 	if exists(':GitGutterEnable')
 		nmap <F2> :GitGutterToggle<CR>
 		GitGutterLineHighlightsEnable
+	endif
+	if exists(':CtrlP')
+		nmap <F6> :CtrlP<CR>
 	endif
 	if exists(':NERDTree')
 		"au VimEnter * NERDTreeToggle D:/web/sites
@@ -317,3 +322,5 @@ nmap zC v%zf
 " Navigate through wrapped lines
 noremap j gj
 noremap k gk
+
+
