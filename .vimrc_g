@@ -153,6 +153,14 @@ function! Plugins()
 	endif
 endfunction
 
+function! InitPerlWork()
+	colorscheme uperl
+	
+	"Make foldings
+	nmap zC ^f{v%zf
+
+endfunction
+
 if has('perl')
 	function! PerlCurrentSub()
 	perl << EOP
@@ -234,7 +242,7 @@ nmap <F4> :set hls! <cr>
 " hit '/' highlights then enter search mode
 nnoremap / :set hlsearch<cr>/
 
-autocmd FileType perl colorscheme uperl
+autocmd FileType perl call InitPerlWork()
 
 function! SetStatusline()
 	set laststatus=2
@@ -322,9 +330,6 @@ nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
-
-"Make foldings
-nmap zC v%zf
 
 " Navigate through wrapped lines
 noremap j gj
