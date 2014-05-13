@@ -44,6 +44,7 @@ Bundle	'xolox/vim-session'
 Bundle	'xolox/vim-misc'
 Bundle	'shinokada/SWTC.vim'
 Bundle	'kien/ctrlp.vim'
+Bundle	'vim-perl/vim-perl'
 "Bundle	'bling/vim-airline'
 "Bundle	'fholgado/minibufexpl.vim'
 
@@ -202,6 +203,14 @@ EOP
 			return ''
 		endif
 	endfunction
+endif
+
+if has("folding")
+	set foldcolumn=3
+	let perl_fold=1
+	"let perl_fold_blocks=1
+	set foldmethod=syntax
+	set foldlevelstart=1
 endif
 
 "-------------------------------------------------------------------------------
