@@ -45,6 +45,7 @@ Bundle	'xolox/vim-misc'
 Bundle	'shinokada/SWTC.vim'
 Bundle	'kien/ctrlp.vim'
 Bundle	'vim-perl/vim-perl'
+Bundle	'kshenoy/vim-signature'
 "Bundle	'bling/vim-airline'
 "Bundle	'fholgado/minibufexpl.vim'
 
