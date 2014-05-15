@@ -44,7 +44,7 @@ Bundle	'xolox/vim-session'
 Bundle	'xolox/vim-misc'
 Bundle	'shinokada/SWTC.vim'
 Bundle	'kien/ctrlp.vim'
-Bundle	'vim-perl/vim-perl'
+"Bundle	'vim-perl/vim-perl' Too slow on large files. May be later
 Bundle	'kshenoy/vim-signature'
 "Bundle	'bling/vim-airline'
 "Bundle	'fholgado/minibufexpl.vim'
@@ -254,6 +254,18 @@ nnoremap / :set hlsearch<cr>/
 
 autocmd FileType perl call InitPerlWork()
 
+"" Toggle relative line number
+function! NumberToggle()
+	if(&relativenumber)
+		set norelativenumber
+			set number
+		else
+			"" Uncomment the following to display a '0' instead of the line number
+			" set nonumber
+			set relativenumber
+	endif
+endfunc
+
 function! SetStatusline()
 	set laststatus=2
 	set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ ff:%{&ff}\ fenc:%{&fenc}%=(ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ 
@@ -295,6 +307,7 @@ set writebackup
 "set showtabline=0
 set tabline=%!MyTabLine()
 set guitablabel=%!MyGuiTabLabel()
+set pastetoggle=<F7>
 "-------------------------------------------------------------------------------
 "  highlight paired brackets
 "-------------------------------------------------------------------------------
@@ -345,4 +358,4 @@ nmap g# g#zz
 noremap j gj
 noremap k gk
 
-
+nnoremap <F5> :call NumberToggle()<cr>
