@@ -207,11 +207,11 @@ EOP
 endif
 
 if has("folding")
-	set foldcolumn=3
-	let perl_fold=1
+	"set foldcolumn=3
+	"let perl_fold=1
 	"let perl_fold_blocks=1
-	set foldmethod=syntax
-	set foldlevelstart=1
+	"set foldmethod=syntax
+	"set foldlevelstart=1
 endif
 
 "-------------------------------------------------------------------------------
