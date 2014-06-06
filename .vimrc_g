@@ -214,6 +214,34 @@ EOP
 	endfunction
 endif
 
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+"" Toggle relative line number
+function! NumberToggle()
+	if(&relativenumber)
+		set norelativenumber
+			set number
+		else
+			"" Uncomment the following to display a '0' instead of the line number
+			" set nonumber
+			set relativenumber
+	endif
+endfunc
+
+function! SetStatusline()
+	set laststatus=2
+	set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ ff:%{&ff}\ fenc:%{&fenc}%=(ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ 
+	if has('perl')
+		set statusline+=%(\%{StatusLineIndexLine()}%)
+	endif
+	set statusline+=[%2p%%]%{fugitive#statusline()}
+endfunction
+
 if has("folding")
 	"set foldcolumn=3
 	"let perl_fold=1
@@ -261,27 +289,6 @@ nmap <F4> :set hls! <cr>
 nnoremap / :set hlsearch<cr>/
 
 autocmd FileType perl call InitPerlWork()
-
-"" Toggle relative line number
-function! NumberToggle()
-	if(&relativenumber)
-		set norelativenumber
-			set number
-		else
-			"" Uncomment the following to display a '0' instead of the line number
-			" set nonumber
-			set relativenumber
-	endif
-endfunc
-
-function! SetStatusline()
-	set laststatus=2
-	set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ ff:%{&ff}\ fenc:%{&fenc}%=(ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ 
-	if has('perl')
-		set statusline+=%(\%{StatusLineIndexLine()}%)
-	endif
-	set statusline+=[%2p%%]%{fugitive#statusline()}
-endfunction
 
 call SetStatusline()
 
@@ -352,6 +359,9 @@ nmap <C-h> <C-W>h
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-l> <C-W>l
+
+" Show syntag group
+" nmap <F11> :call <SID>SynStack()<CR>
 
 " n and N
 " Search matches are always in center
