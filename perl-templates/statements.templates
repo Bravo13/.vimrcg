@@ -4,3 +4,5 @@ if ( <CURSOR> ) {
 } else {
 	<-ELSE_PART->
 }
+== Statements.elsif == map:sei, sc:e ==
+}elsif ( <CURSOR> ) {
