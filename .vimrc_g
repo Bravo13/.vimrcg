@@ -54,6 +54,7 @@ Bundle	'kien/ctrlp.vim'
 "Bundle	'vim-perl/vim-perl' Too slow on large files. May be later
 Bundle	'kshenoy/vim-signature'
 Bundle	'hlissner/vim-multiedit'
+"Bundle	'eiginn/netrw'
 "Bundle	'bling/vim-airline'
 "Bundle	'fholgado/minibufexpl.vim'
 
@@ -332,6 +333,15 @@ highlight MatchParen ctermbg=blue guibg=lightyellow
 "  MiniBufExpl
 "-------------------------------------------------------------------------------
 let g:miniBufExplUseSingleClick = 1
+
+"-------------------------------------------------------------------------------
+"  netrw
+"-------------------------------------------------------------------------------
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+let g:netrw_banner = 0
 
 autocmd VimEnter * :call Plugins()
 
