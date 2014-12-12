@@ -54,6 +54,7 @@ Bundle	'kien/ctrlp.vim'
 "Bundle	'vim-perl/vim-perl' Too slow on large files. May be later
 Bundle	'kshenoy/vim-signature'
 Bundle	'hlissner/vim-multiedit'
+Bundle	'aserebryakov/filestyle'
 "Bundle	'eiginn/netrw'
 "Bundle	'bling/vim-airline'
 "Bundle	'fholgado/minibufexpl.vim'
