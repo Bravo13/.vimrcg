@@ -1,6 +1,6 @@
 set fileencodings=ucs-bom,utf-8
 source $HOME/.vimrcg/vim_use_utf8_symbols
-filetype off 
+filetype off
 let $VIMHOME=expand('<sfile>:p:h:h')
 if has('win32') || has('win64')
 	lang messages en
@@ -13,19 +13,19 @@ if has('win32') || has('win64')
 	let $VIMHOME = $HOME."/vimfiles"
 	set directory=$VIMHOME."\temp"
 	set backupdir=$VIMHOME."\temp"
-	set backupskip=/tmp/*,/private/tmp/* 
+	set backupskip=/tmp/*,/private/tmp/*
 	let $TEMP = $VIMHOME."\temp"
-	let $TMPDIR = $VIMHOME."\temp" 
-	set rtp+=$VIMHOME/bundle/vundle/ 
+	let $TMPDIR = $VIMHOME."\temp"
+	set rtp+=$VIMHOME/bundle/vundle/
 	call vundle#rc('$VIMHOME/bundle/')
 	let g:Perl_GlobalTemplateFile = $VIMHOME.'\bundle\vim-plugins\perl-support\templates\Templates'
 	let g:Perl_LocalTemplateFile = $HOME.'\.vimrcg\perl-templates\Templates'
 	"autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
 else
 	set encoding=utf-8
-	set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
-	set backupskip=/tmp/*,/private/tmp/* 
-	set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+	set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+	set backupskip=/tmp/*,/private/tmp/*
+	set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 	set rtp+=~/.vim/bundle/vundle/
 	call vundle#rc()
 	let $VIMHOME = $HOME."/.vim"
@@ -58,6 +58,8 @@ Bundle	'aserebryakov/filestyle'
 "Bundle	'eiginn/netrw'
 "Bundle	'bling/vim-airline'
 "Bundle	'fholgado/minibufexpl.vim'
+Bundle 'yamafaktory/lumberjack.vim'
+Bundle 'benjaminwhite/Benokai'
 
 "репозитории vim/scripts
 "Bundle 'L9'
