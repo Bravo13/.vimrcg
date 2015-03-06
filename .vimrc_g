@@ -62,6 +62,7 @@ Bundle 'yamafaktory/lumberjack.vim'
 Bundle 'benjaminwhite/Benokai'
 Bundle 'Yggdroot/indentLine'
 Bundle 'StanAngeloff/php.vim'
+Bundle 'tmhedberg/matchit'
 
 "репозитории vim/scripts
 "Bundle 'L9'
