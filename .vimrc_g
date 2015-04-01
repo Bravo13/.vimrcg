@@ -53,7 +53,7 @@ Bundle	'shinokada/SWTC.vim'
 Bundle	'kien/ctrlp.vim'
 "Bundle	'vim-perl/vim-perl' Too slow on large files. May be later
 Bundle	'kshenoy/vim-signature'
-Bundle	'hlissner/vim-multiedit'
+Bundle	'terryma/vim-multiple-cursors'
 Bundle	'aserebryakov/filestyle'
 "Bundle	'eiginn/netrw'
 "Bundle	'bling/vim-airline'
@@ -63,6 +63,11 @@ Bundle 'benjaminwhite/Benokai'
 Bundle 'Yggdroot/indentLine'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'tmhedberg/matchit'
+Bundle 'godlygeek/tabular'
+Bundle 'moll/vim-node'
+Bundle 'pangloss/vim-javascript'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'Lokaltog/vim-distinguished'
 
 "репозитории vim/scripts
 "Bundle 'L9'
@@ -320,6 +325,8 @@ nnoremap / :set hlsearch<cr>/
 autocmd FileType perl call InitPerlWork()
 autocmd FileType perl call SeeTab()
 autocmd FileType php call SeeTab()
+
+"au FileType javascript call JavaScriptFold()
 
 call SetStatusline()
 
