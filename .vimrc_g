@@ -197,7 +197,7 @@ function! Plugins()
 	if exists(':NERDTree')
 		"au VimEnter * NERDTreeToggle D:/web/sites
 		" hit <F3> to toggle NERDTree
-		exe "nmap <F3> :NERDTreeToggle<CR>"
+		exe "nmap <F3> :NERDTreeToggle %:p:h<CR>"
 
 		let g:nerdtree_tabs_open_on_gui_startup=1
 	endif
