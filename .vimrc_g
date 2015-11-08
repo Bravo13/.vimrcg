@@ -3,6 +3,7 @@ source $HOME/.vimrcg/vim_use_utf8_symbols
 filetype off
 let $VIMHOME=expand('<sfile>:p:h:h')
 if has('win32') || has('win64')
+	set encoding=utf-8
 	lang messages en
 	if( !has('gui') )
 		set term=xterm
