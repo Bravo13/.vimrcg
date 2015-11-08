@@ -21,7 +21,6 @@ if has('win32') || has('win64')
 	call vundle#rc('$VIMHOME/bundle/')
 	let g:Perl_GlobalTemplateFile = $VIMHOME.'\bundle\vim-plugins\perl-support\templates\Templates'
 	let g:Perl_LocalTemplateFile = $HOME.'\.vimrcg\perl-templates\Templates'
-	"autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
 else
 	set encoding=utf-8
 	set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
