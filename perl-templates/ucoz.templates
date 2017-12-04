@@ -30,3 +30,49 @@ $dbh->do($query) or fatalError("[${\__FILE__} (${\__LINE__})] $DBI::err \"$DBI::
 
 =cut
 == ENDTEMPLATE ==
+
+== uCoz.adminv2.fields.select == map:uafs, sc:s, below, indent ==
+type => 'select',
+name => '<CURSOR>',
+label => $self->sign->get(TRANSLATE => '<+LABEL+>'),
+options => [<+OPTIONS+>],
+value => 0,
+
+== uCoz.adminv2.fields.text == map:uaft, sc:s, below, indent ==
+type => 'text',
+name => '<CURSOR>',
+label => $self->sign->get(TRANSLATE => '<+LABEL+>'),
+
+== uCoz.adminv2.fields.textarea == map:uaftt, sc:s, below, indent ==
+type => 'textarea',
+name => '<CURSOR>',
+label => $self->sign->get(TRANSLATE => '<+LABEL+>'),
+
+== uCoz.adminv2.fields.checkobox == map:uafc, sc:s, below, indent ==
+type => 'checkbox',
+name => '<CURSOR>',
+label => $self->sign->get(TRANSLATE => '<+LABEL+>'),
+value => 0,
+validator => {
+	values => [],
+},
+
+== uCoz.adminv2.fields.slider == map:uafsl, sc:s, below, indent ==
+type => 'slider',
+name => '<CURSOR>',
+label => $self->sign->get(TRANSLATE => '<+LABEL+>'),
+value => 0,
+validator => {
+}
+
+== uCoz.adminv2.fieldset == map:uaffs, sc:s, below, indent ==
+{
+	name => '<CURSOR>_fieldset',
+	label => $self->sign->get(TRANSLATE => '<+LABEL+>'),
+	description => $self->t('<+DESCR+>'),
+	fields => [
+		{
+			<+FIELDS+>
+		}
+	]
+},
