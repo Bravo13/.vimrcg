@@ -34,6 +34,19 @@ else
 endif
 
 "-------------------------------------------------------------------------------
+" Use Vim settings, rather then Vi settings.
+" This must be first, because it changes other options as a side effect.
+"-------------------------------------------------------------------------------
+set nocompatible
+
+" this is required for mark names to persist between editor sessions
+if has('nvim')
+	set shada+=!
+else
+	set viminfo+=!
+endif
+
+"-------------------------------------------------------------------------------
 " Plugins list
 "-------------------------------------------------------------------------------
 "репозитории на github
@@ -51,7 +64,8 @@ Bundle	'xolox/vim-session'
 Bundle	'xolox/vim-misc'
 Bundle	'kien/ctrlp.vim'
 "Bundle	'vim-perl/vim-perl' Too slow on large files. May be later
-Bundle	'kshenoy/vim-signature' " place, toggle, display marks
+"Bundle	'kshenoy/vim-signature' " place, toggle, display marks
+Bundle 'Yilin-Yang/vim-markbar'
 Bundle	'terryma/vim-multiple-cursors'
 Bundle	'aserebryakov/filestyle'
 "Bundle	'eiginn/netrw'
@@ -315,12 +329,6 @@ if has("folding")
 endif
 
 "-------------------------------------------------------------------------------
-" Use Vim settings, rather then Vi settings.
-" This must be first, because it changes other options as a side effect.
-"-------------------------------------------------------------------------------
-set nocompatible
-
-"-------------------------------------------------------------------------------
 " Enable file type detection. Use the default filetype settings.
 " Also load indent files, to automatically do language-dependent indenting.
 "-------------------------------------------------------------------------------
@@ -360,6 +368,7 @@ autocmd FileType php call SeeTab()
 
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=2 et
 autocmd Filetype jade setlocal ts=2 sw=2 sts=2 et
+autocmd Filetype xslate setlocal ts=2 sw=2 sts=2 et
 
 "au FileType javascript call JavaScriptFold()
 
@@ -463,3 +472,10 @@ nnoremap <F5> :call NumberToggle()<cr>
 " delete and change commands without changing anonymous register
 nmap <C-d> "_d
 nmap <C-c> "_c
+
+" MakBar settings
+nmap <Leader>m <Plug>ToggleMarkbar
+
+" the following are unneeded if ToggleMarkbar is mapped
+nmap <Leader>mo <Plug>OpenMarkbar
+nmap <Leader>mc <Plug>CloseMarkbar
