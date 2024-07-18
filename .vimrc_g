@@ -373,6 +373,7 @@ autocmd Filetype javascript setlocal ts=2 sw=2 sts=2 et
 autocmd Filetype json setlocal ts=2 sw=2 sts=2 et
 autocmd Filetype jade setlocal ts=2 sw=2 sts=2 et
 autocmd Filetype xslate setlocal ts=2 sw=2 sts=2 et
+autocmd Filetype xml setlocal ts=2 sw=2 sts=2 et
 autocmd Filetype html setlocal ts=2 sw=2 sts=2 et
 
 "au FileType javascript call JavaScriptFold()
